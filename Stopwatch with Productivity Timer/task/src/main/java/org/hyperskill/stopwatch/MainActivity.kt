@@ -6,13 +6,18 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
+
+    lateinit var textView: TextView
+    lateinit var startButton: Button
+    lateinit var resetButton: Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val textView = findViewById<TextView>(R.id.textView)
-        val startButton = findViewById<Button>(R.id.startButton)
-        val resetButton = findViewById<Button>(R.id.resetButton)
+        textView = findViewById(R.id.textView)
+        startButton = findViewById(R.id.startButton)
+        resetButton = findViewById(R.id.resetButton)
 
         /*
             Tests for android can not guarantee the correctness of solutions that make use of
