@@ -1,15 +1,23 @@
 package org.hyperskill.stopwatch
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
+
 class MainActivity : AppCompatActivity() {
 
-    lateinit var textView: TextView
-    lateinit var startButton: Button
-    lateinit var resetButton: Button
+    private lateinit var textView: TextView
+    private lateinit var startButton: Button
+    private lateinit var resetButton: Button
+
+    private var seconds = 0
+    private var running = false
+    private var handler = Handler(Looper.getMainLooper())
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,19 +27,44 @@ class MainActivity : AppCompatActivity() {
         startButton = findViewById(R.id.startButton)
         resetButton = findViewById(R.id.resetButton)
 
-        /*
-            Tests for android can not guarantee the correctness of solutions that make use of
-            mutation on "static" variables to keep state. You should avoid using those.
-            Consider "static" as being anything on kotlin that is transpiled to java
-            into a static variable. That includes global variables and variables inside
-            singletons declared with keyword object, including companion object.
-            This limitation is related to the use of JUnit on tests. JUnit re-instantiate all
-            instance variable for each test method, but it does not re-instantiate static variables.
-            The use of static variable to hold state can lead to state from one test to spill over
-            to another test and cause unexpected results.
-            Using mutation on static variables to keep state
-            is considered a bad practice anyway and no measure
-            attempting to give support to that pattern will be made.
-         */
+
+        updateTime()
+
+
+        startButton.setOnClickListener {
+            if (!running) {
+                running = true
+                runTimer()
+            }
+        }
+
+        resetButton.setOnClickListener {
+            running = false
+            handler.removeCallbacks(runnable)
+            seconds = 0
+            updateTime()
+        }
+    }
+
+
+
+    private fun runTimer() {
+        handler.postDelayed(runnable, 1000)
+    }
+
+    private val runnable = object : Runnable {
+        override fun run() {
+            if (running) {
+                seconds++
+                updateTime()
+                handler.postDelayed(this, 1000)
+            }
+        }
+    }
+
+    private fun updateTime() {
+        val minutes = seconds / 60
+        val secs = seconds % 60
+        textView.text = String.format("%02d:%02d", minutes, secs)
     }
 }
