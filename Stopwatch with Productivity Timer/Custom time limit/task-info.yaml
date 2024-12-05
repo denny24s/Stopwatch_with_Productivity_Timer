@@ -51,6 +51,12 @@ files:
   - name: src/test/java/org/hyperskill/tests/stopwatch/Stage4UnitTest.kt
     visible: false
     learner_created: false
-feedback_link: https://hyperskill.org/projects/72/stages/397/implement#comment
-status: Unchecked
-record: -1
+  - name: src/main/res/layout/dialog_settings.xml
+    visible: true
+    learner_created: true
+feedback_link: https://hyperskill.org/learn/step/9289#comment
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Fri, 11 Oct 2024 15:35:29 UTC"
+record: 4

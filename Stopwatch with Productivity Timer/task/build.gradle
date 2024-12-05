@@ -7,7 +7,7 @@ android {
     defaultConfig {
 
         applicationId "org.hyperskill.stopwatch"
-        minSdkVersion hs.android.minSdkVersion
+        minSdkVersion 21
         targetSdkVersion hs.android.targetSdkVersion
         versionCode 1
         versionName '1.0'

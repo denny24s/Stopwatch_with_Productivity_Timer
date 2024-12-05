@@ -4,20 +4,20 @@ hyperskill_project:
   is_template_based: false
   use_ide: true
   environment: android
-update_date: "Thu, 01 Jan 1970 00:00:00 UTC"
+update_date: "Fri, 11 Oct 2024 08:33:19 UTC"
 stages:
   - id: 394
     step: 9286
     is_completed: true
   - id: 395
     step: 27286
-    is_completed: false
+    is_completed: true
   - id: 396
     step: 9288
-    is_completed: false
+    is_completed: true
   - id: 397
     step: 9289
-    is_completed: false
+    is_completed: true
   - id: 398
     step: 9290
     is_completed: false
